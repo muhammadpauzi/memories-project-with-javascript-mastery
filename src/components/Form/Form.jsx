@@ -1,26 +1,40 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import FileBase from 'react-file-base64';
-import { useDispatch } from "react-redux";
-import { createPost } from "../../actions/posts";
+import { useDispatch, useSelector } from "react-redux";
+import { createPost, updatePost } from "../../actions/posts";
 
-export default function Form() {
+export default function Form({ currentId, setCurrentId }) {
     const [postData, setPostData] = useState({
         creator: '', title: '', message: '', tags: '', selectedFile: ''
     });
     const dispatch = useDispatch();
+    const post = useSelector(state => currentId ? state.posts.find(post => post._id === currentId) : null);
+
+    useEffect(() => {
+        if (post) setPostData(post);
+    }, [post]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createPost(postData));
+
+        if (currentId) {
+            dispatch(updatePost(currentId, postData));
+        } else {
+            dispatch(createPost(postData));
+        }
+        handleClear();
     }
 
     const handleClear = () => {
-
+        setCurrentId(null);
+        setPostData({
+            creator: '', title: '', message: '', tags: '', selectedFile: ''
+        });
     }
 
     return (
         <div>
-            <h2>Creating a Memory</h2>
+            <h2>{currentId ? 'Editing' : 'Creating'} a Memory</h2>
             <form method="post" autoComplete="no" noValidate>
                 <div className="mb-3">
                     <label htmlFor="creator" className="form-label">Creator</label>
@@ -43,8 +57,8 @@ export default function Form() {
                     <input class="form-control" type="file" id="formFile" /> */}
                     <FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} />
                 </div>
-                <button className="btn btn-primary mb-2 w-100" type="submit" onClick={handleSubmit}>Create</button>
-                <button className="btn btn-danger w-100" onClick={handleClear}>Clear</button>
+                <button className="btn btn-primary mb-2 w-100" type="submit" onClick={handleSubmit}>{currentId ? 'Edit' : 'Create'}</button>
+                <button type="button" className="btn btn-danger w-100" onClick={handleClear}>Clear</button>
             </form>
         </div>
     )

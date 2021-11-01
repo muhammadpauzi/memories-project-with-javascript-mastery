@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { getPosts } from './actions/posts';
@@ -6,11 +6,12 @@ import Form from "./components/Form/Form";
 import Navbar from "./components/Navbar";
 import Posts from "./components/Posts/Posts";
 function App() {
+  const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
 
   return (
     <>
@@ -18,10 +19,10 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="col-md-8">
-            <Posts />
+            <Posts setCurrentId={setCurrentId} />
           </div>
           <div className="col-md-4">
-            <Form />
+            <Form currentId={currentId} setCurrentId={setCurrentId} />
           </div>
         </div>
       </div>
