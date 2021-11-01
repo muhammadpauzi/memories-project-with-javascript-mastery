@@ -35,7 +35,7 @@ export default function Form() {
                     <input type="text" className="form-control" id="message" value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="tags" className="form-label">Tags</label>
+                    <label htmlFor="tags" className="form-label">Tags (coma saparated)</label>
                     <input type="text" className="form-control" id="tags" value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value })} />
                 </div>
                 <div className="mb-3">
