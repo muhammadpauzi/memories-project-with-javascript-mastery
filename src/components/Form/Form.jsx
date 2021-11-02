@@ -50,7 +50,7 @@ export default function Form({ currentId, setCurrentId }) {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="tags" className="form-label">Tags (coma saparated)</label>
-                    <input type="text" className="form-control" id="tags" value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value })} />
+                    <input type="text" className="form-control" id="tags" value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
                 </div>
                 <div className="mb-3">
                     {/* <label for="formFile" class="form-label">Default file input example</label>

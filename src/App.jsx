@@ -17,7 +17,7 @@ function App() {
     <>
       <Navbar />
       <div className="container">
-        <div className="row">
+        <div className="row flex-column-reverse">
           <div className="col-md-8">
             <Posts setCurrentId={setCurrentId} />
           </div>
