@@ -1,0 +1,73 @@
+*{
+    font-family: -apple-system, BlinkMacSystemFont, 'Poppins', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.btn{
+    font-weight: 400;
+    font-size: .9rem;
+    padding: .7rem 1rem;
+    border-radius: 3px;
+    border: none;
+}
+
+.dropdown-item{
+    font-size: .8rem;
+    font-weight: 400;
+}
+
+.dropdown-item:active{
+    background-color: #5437f8;
+}
+
+.btn:focus, .btn:active, .btn:active{
+    box-shadow: none !important;
+}
+
+.form-label{
+    font-weight: 500;
+    font-size: .9rem;
+}
+
+.form-control{
+    font-size: .9rem;
+    padding: .9rem 1rem;
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border-color: #5437f8;
+}
+
+.btn-primary, .bg-primary{
+    background-color: #6347FE !important;
+}
+
+.btn-primary:hover, .btn-primary:checked, .btn-primary:focus, .btn-primary:active{
+    background-color: #5437f8;
+}
+
+.btn-danger{
+    background-color: #FD5759;
+}
+
+.btn-danger:hover, .btn-danger:checked, .btn-danger:focus, .btn-danger:active{
+    background-color: #f03033;
+}
+
+.card-post{
+    border: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,.1);
+    transition-property: box-shadow, border-color;
+    transition-duration: .3s;
+}
+
+.card-post:hover{
+    box-shadow: 0 3px 30px rgba(0,0,0,.1);
+}
+
+.card-post .card-text{
+    font-size: .83rem;
+    font-weight: 400;
+    line-height: 23px;
+    text-align: justify;
+}

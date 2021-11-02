@@ -34,7 +34,7 @@ export default function Form({ currentId, setCurrentId }) {
 
     return (
         <div>
-            <h2>{currentId ? 'Editing' : 'Creating'} a Memory</h2>
+            <h3 className="py-3 fw-medium">{currentId ? 'Editing' : 'Creating'} a Memory</h3>
             <form method="post" autoComplete="no" noValidate>
                 <div className="mb-3">
                     <label htmlFor="creator" className="form-label">Creator</label>
@@ -53,8 +53,8 @@ export default function Form({ currentId, setCurrentId }) {
                     <input type="text" className="form-control" id="tags" value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
                 </div>
                 <div className="mb-3">
-                    {/* <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="formFile" /> */}
+                    {/* <label for="formFile" className="form-label">Default file input example</label>
+                    <input className="form-control" type="file" id="formFile" /> */}
                     <FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} />
                 </div>
                 <button className="btn btn-primary mb-2 w-100" type="submit" onClick={handleSubmit}>{currentId ? 'Edit' : 'Create'}</button>
